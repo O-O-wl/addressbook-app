@@ -22,6 +22,7 @@ class AddressCell: UITableViewCell {
     func configure(_ address: Address) {
         setUpAttribute()
         setUpConstraint()
+        
         var profileImage: UIImage?
         if let imageData = address.imageData {
            profileImage = UIImage(data: imageData)
@@ -36,7 +37,6 @@ class AddressCell: UITableViewCell {
 extension AddressCell {
     
     private func setUpAttribute() {
-        
         profileImageView.do {
             self.contentView.addSubview($0)
             $0.clipsToBounds = true

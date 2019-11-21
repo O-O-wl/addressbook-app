@@ -15,7 +15,6 @@ protocol AddressBookViewType: AnyObject {
 }
 
 class AddressBookViewController: UITableViewController, AddressBookViewType {
-    // MARK: - UI
     
     // MARK: - Dependencies
     var viewModel: AddressBookViewModelType? {
