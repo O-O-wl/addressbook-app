@@ -26,6 +26,8 @@ class AddressBookViewController: UITableViewController, AddressBookViewType {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        setUpTableView()
     }
 
     // MARK: - Table view data source
@@ -43,6 +45,18 @@ extension AddressBookViewController {
         }
     }
 }
+// MARK: - Layout & Attributes
+extension AddressBookViewController {
+    
+    func setUpTableView() {
+        self.tableView.do {
+            $0.register(AddressCell.self, forCellReuseIdentifier: AddressCell.reuseIdentifier)
+        }
+    }
+}
+// MARK: - UITableViewDataSource
+extension AddressBookViewController {
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
