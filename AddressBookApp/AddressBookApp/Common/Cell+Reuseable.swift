@@ -6,10 +6,16 @@
 //  Copyright © 2019 이동영. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol Reuseable {
     
     static var reuseIdentifier: String { get }
 }
 
+extension UITableViewCell: Reuseable {
+    
+    static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+}
