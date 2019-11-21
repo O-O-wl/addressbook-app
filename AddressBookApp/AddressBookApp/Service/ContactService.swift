@@ -32,8 +32,7 @@ class ContactService {
         
         contactAccessQueue.async {
             do {
-                try self.store.enumerateContacts(with: request) { contact, status in
-                    print(status)
+                try self.store.enumerateContacts(with: request) { contact, _ in
                     result.append(contact)
                 }
                 
@@ -41,9 +40,8 @@ class ContactService {
                 print("Error \(error.localizedDescription)")
             }
             
-            DispatchQueue.main.async {
-                completion(result)
-            }
+            completion(result)
+            
         }
     }
 }
