@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct Address {
+    
+    let imageData: Data?
+    let name: String
+    let tel: String
+    let email: String
+}
