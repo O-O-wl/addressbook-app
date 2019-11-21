@@ -36,8 +36,11 @@ class AddressCell: UITableViewCell {
 extension AddressCell {
     
     private func setUpAttribute() {
+        
         profileImageView.do {
             self.contentView.addSubview($0)
+            $0.clipsToBounds = true
+            $0.contentMode = .scaleAspectFill
         }
         
         nameLabel.do {
