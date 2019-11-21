@@ -47,6 +47,7 @@ extension AddressBookViewController {
     
     func setUpTableView() {
         self.tableView.do {
+            $0.rowHeight = 90
             $0.register(AddressCell.self, forCellReuseIdentifier: AddressCell.reuseIdentifier)
         }
     }
