@@ -7,8 +7,17 @@
 
 import UIKit
 
-class AddressBookViewController: UITableViewController {
+protocol AddressBookViewType: AnyObject {
+    
+    var viewModel: AddressBookViewModelType? { get set }
+}
 
+class AddressBookViewController: UITableViewController, AddressBookViewType {
+    // MARK: - Dependencies
+    var viewModel: AddressBookViewModelType? {
+        didSet { bindViewModel() }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +30,19 @@ class AddressBookViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+// MARK: - Bind
+extension AddressBookViewController {
+    
+    func bindViewModel() {
+        guard let viewModel = viewModel else { return }
+        
+        viewModel.dataDidLoad = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
+}
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
