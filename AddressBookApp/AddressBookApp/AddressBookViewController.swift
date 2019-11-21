@@ -32,7 +32,7 @@ class AddressBookViewController: UITableViewController, AddressBookViewType {
 // MARK: - Bind
 extension AddressBookViewController {
     
-    func bindViewModel() {
+    private func bindViewModel() {
         guard let viewModel = viewModel else { return }
         
         viewModel.dataDidLoad = { [weak self] in
@@ -45,7 +45,7 @@ extension AddressBookViewController {
 // MARK: - Layout & Attributes
 extension AddressBookViewController {
     
-    func setUpTableView() {
+    private func setUpTableView() {
         self.tableView.do {
             $0.rowHeight = 90
             $0.register(AddressCell.self, forCellReuseIdentifier: AddressCell.reuseIdentifier)
