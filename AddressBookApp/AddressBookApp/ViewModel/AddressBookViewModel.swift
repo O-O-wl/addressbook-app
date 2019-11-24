@@ -8,8 +8,8 @@
 
 import Foundation
 
-// MARK: - AddressBookViewModelType
-protocol AddressBookViewModelType: AnyObject {
+// MARK: - AddressBookViewBindable
+protocol AddressBookViewBindable: AnyObject {
     
     var numOfAddress: Int { get }
     var dataDidLoad: (() -> Void)? { get set }
@@ -18,7 +18,7 @@ protocol AddressBookViewModelType: AnyObject {
 }
 
 // MARK: - AddressBookViewModel
-class AddressBookViewModel: AddressBookViewModelType {
+class AddressBookViewModel: AddressBookViewBindable {
     
     // MARK: - Dependencies
     private let service: ContactService
