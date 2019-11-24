@@ -78,7 +78,7 @@
 			children = (
 				0E32723723870B6900EF36B4 /* Model */,
 				0E3272342387071700EF36B4 /* Common */,
-				0E327231238706EA00EF36B4 /* VIewModel */,
+				0E327231238706EA00EF36B4 /* ViewModel */,
 				0E327230238706E600EF36B4 /* View */,
 				0E32722F238706E000EF36B4 /* ViewController */,
 				0E32722A2387018A00EF36B4 /* Constant */,
@@ -124,12 +124,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		0E327231238706EA00EF36B4 /* VIewModel */ = {
+		0E327231238706EA00EF36B4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				0E32723A23870BEA00EF36B4 /* AddressBookViewModel.swift */,
 			);
-			path = VIewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		0E3272342387071700EF36B4 /* Common */ = {
