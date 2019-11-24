@@ -23,7 +23,7 @@ class ContactService {
     private init() {}
     
     // MARK: - Methods
-    func fetchContacts(_ completion: @escaping ([CNContact]) -> Void) {
+    func fetchContacts(_ completion: @escaping (Result<[CNContact], Error>) -> Void) {
         var result = [CNContact]()
         let keysToFetch = ContactKey.allCases.map { $0.descriptor }
         let request = CNContactFetchRequest(keysToFetch: keysToFetch).then { $0.sortOrder = .familyName}
@@ -32,14 +32,12 @@ class ContactService {
             do {
                 try self.store.enumerateContacts(with: request) { contact, _ in
                     result.append(contact)
+                    completion(.success(result))
                 }
                 
             } catch let error {
-                print("Error \(error.localizedDescription)")
+                completion(.failure(error))
             }
-            
-            completion(result)
-            
         }
     }
 }
