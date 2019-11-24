@@ -42,10 +42,10 @@ extension AddressBookViewController {
         }
         
         viewModel.errorDidOccured = { [weak self] error in
-            UIAlertController(title: "에러 발생",
-                              message: error.localizedDescription,
-                              preferredStyle: .alert).then { self?.present($0, animated: true, completion: nil)}
-        }
+            let alertVC =  UIAlertController(title: "에러 발생",
+                                             message: error.localizedDescription,
+                                             preferredStyle: .alert)
+            self?.present(alertVC, animated: true, completion: nil)}
     }
 }
 // MARK: - Layout & Attributes
@@ -66,13 +66,13 @@ extension AddressBookViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.numOfAddress ?? 0
+        return viewModel?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(withType: AddressCell.self, for: indexPath),
-            let address = viewModel?.getAddress(at: indexPath.row)
+            let address = viewModel?[at: indexPath]
             else { return AddressCell() }
         
         cell.configure(address)

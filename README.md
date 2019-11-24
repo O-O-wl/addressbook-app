@@ -20,3 +20,4 @@ Contacts 프레임워크에 대해 학습하며 진행했다.
 관련 키 `CNContactGivenNameKey … `  등의 Key를 담은 요청을 만들어서 `CNContactStore` 에 Fetch를 요청하면 key에 해당하는 프로퍼티들을 가진 NSContact 객체를 반환해주었다.
 
  이 데이터를 View에 맞는 모델로 변환후 프리젠팅하게 로직을 구현했다.
+
