@@ -11,11 +11,11 @@ import Foundation
 // MARK: - AddressBookViewBindable
 protocol AddressBookViewBindable: AnyObject {
     
-    var numOfAddress: Int { get }
+    var count: Int { get }
     var dataDidLoad: (() -> Void)? { get set }
     var errorDidOccured: ((Error) -> Void)? { get set }
     
-    func getAddress(at index: Int) -> Address?
+    subscript(at indexPath: IndexPath) -> Address? { get }
 }
 
 // MARK: - AddressBookViewModel
@@ -42,17 +42,14 @@ class AddressBookViewModel: AddressBookViewBindable {
     }
     
     // MARK: - Methods
-    var numOfAddress: Int {
+    var count: Int {
         return addresses?.count ?? 0
     }
     
-    func getAddress(at index: Int) -> Address? {
-        guard
-            let addresses = addresses,
-            addresses.count > index
-            else { return nil }
+    subscript(at indexPath: IndexPath) -> Address? {
+        guard count > indexPath.row else { return nil }
         
-        return addresses[index]
+        return addresses?[indexPath.row]
     }
     
     private func fetchRequest() {
