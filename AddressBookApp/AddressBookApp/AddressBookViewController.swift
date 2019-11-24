@@ -9,15 +9,16 @@ import UIKit
 import SnapKit
 import Then
 
-protocol AddressBookViewType: AnyObject {
+protocol AddressBookView: AnyObject {
     
-    var viewModel: AddressBookViewModelType? { get set }
+    var viewModel: AddressBookViewBindable? { get set }
 }
 
-class AddressBookViewController: UITableViewController, AddressBookViewType {
+class AddressBookViewController: UITableViewController, AddressBookView {
+    
     
     // MARK: - Dependencies
-    var viewModel: AddressBookViewModelType? {
+    var viewModel: AddressBookViewBindable? {
         didSet { bindViewModel() }
     }
     
