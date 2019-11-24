@@ -40,6 +40,12 @@ extension AddressBookViewController {
                 self?.tableView.reloadData()
             }
         }
+        
+        viewModel.errorDidOccured = { [weak self] error in
+            UIAlertController(title: "에러 발생",
+                              message: error.localizedDescription,
+                              preferredStyle: .alert).then { self?.present($0, animated: true, completion: nil)}
+        }
     }
 }
 // MARK: - Layout & Attributes

@@ -13,6 +13,7 @@ protocol AddressBookViewBindable: AnyObject {
     
     var numOfAddress: Int { get }
     var dataDidLoad: (() -> Void)? { get set }
+    var errorDidOccured: ((Error) -> Void)? { get set }
     
     func getAddress(at index: Int) -> Address?
 }
@@ -32,6 +33,8 @@ class AddressBookViewModel: AddressBookViewBindable {
     var dataDidLoad: (() -> Void)? {
         didSet { fetchRequest() }
     }
+    
+    var errorDidOccured: ((Error) -> Void)?
     
     // MARK: - Initializer
     init(service: ContactService) {
@@ -53,12 +56,17 @@ class AddressBookViewModel: AddressBookViewBindable {
     }
     
     private func fetchRequest() {
-        service.fetchContacts { [weak self] contacts in
-            self?.addresses = contacts.map {
-                Address(imageData: $0.imageData,
-                        name: $0.givenName + $0.familyName,
-                        tel: $0.phoneNumbers.first?.value.stringValue ?? "",
-                        email: $0.emailAddresses.first?.value as String? ?? "" )
+        service.fetchContacts { [weak self] result in
+            switch(result) {
+            case .success(let contacts):
+                self?.addresses = contacts.map {
+                    Address(imageData: $0.imageData,
+                            name: $0.givenName + $0.familyName,
+                            tel: $0.phoneNumbers.first?.value.stringValue ?? "",
+                            email: $0.emailAddresses.first?.value as String? ?? "" )
+                }
+            case .failure(let error):
+                self?.errorDidOccured?(error)
             }
         }
     }
