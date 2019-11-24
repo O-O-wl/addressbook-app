@@ -11,9 +11,10 @@ import Foundation
 // MARK: - AddressBookViewBindable
 protocol AddressBookViewBindable: AnyObject {
     
-    var count: Int { get }
+    
     var dataDidLoad: (() -> Void)? { get set }
     var errorDidOccured: ((Error) -> Void)? { get set }
+    var count: Int { get }
     
     subscript(at indexPath: IndexPath) -> Address? { get }
 }
