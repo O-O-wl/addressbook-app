@@ -25,7 +25,7 @@ class AddressCell: UITableViewCell {
         
         var profileImage: UIImage?
         if let imageData = address.imageData {
-           profileImage = UIImage(data: imageData)
+            profileImage = UIImage(data: imageData)
         }
         profileImageView.image = profileImage ?? #imageLiteral(resourceName:"addressbook-default-profile")
         nameLabel.text = address.name
@@ -66,26 +66,26 @@ extension AddressCell {
     }
     
     private func setUpConstraint() {
-        profileImageView.snp.makeConstraints { make in
-            make.top.leading.bottom.equalToSuperview().inset(10)
-            make.width.equalTo(profileImageView.snp.height)
+        profileImageView.snp.makeConstraints {
+            $0.top.leading.bottom.equalToSuperview().inset(10)
+            $0.width.equalTo(profileImageView.snp.height)
         }
         
-        nameLabel.snp.makeConstraints { make in
-            make.leading.equalTo(profileImageView.snp.trailing).offset(30)
-            make.top.equalToSuperview().offset(10)
-            make.height.equalToSuperview().multipliedBy(2).dividedBy(3)
+        nameLabel.snp.makeConstraints {
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(30)
+            $0.top.equalToSuperview().offset(10)
+            $0.height.equalToSuperview().multipliedBy(2).dividedBy(3)
         }
         
-        telLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(nameLabel)
-            make.trailing.equalToSuperview().offset(-20)
+        telLabel.snp.makeConstraints {
+            $0.centerY.equalTo(nameLabel)
+            $0.trailing.equalToSuperview().offset(-20)
         }
         
-        emailLabel.snp.makeConstraints { make in
-            make.leading.equalTo(nameLabel.snp.leading)
-            make.top.equalTo(nameLabel.snp.bottom).offset(5)
-            make.height.equalToSuperview().multipliedBy(1).dividedBy(3)
+        emailLabel.snp.makeConstraints {
+            $0.leading.equalTo(nameLabel.snp.leading)
+            $0.top.equalTo(nameLabel.snp.bottom).offset(5)
+            $0.height.equalToSuperview().multipliedBy(1).dividedBy(3)
         }
     }
 }
