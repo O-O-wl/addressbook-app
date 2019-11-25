@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E08168C238BF73B009723F0 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E08168B238BF73B009723F0 /* String+.swift */; };
 		0E3272122386BB8100EF36B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3272112386BB8100EF36B4 /* AppDelegate.swift */; };
 		0E3272142386BB8100EF36B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3272132386BB8100EF36B4 /* SceneDelegate.swift */; };
 		0E32721B2386BB8300EF36B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E32721A2386BB8300EF36B4 /* Assets.xcassets */; };
 		0E32721E2386BB8300EF36B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E32721C2386BB8300EF36B4 /* LaunchScreen.storyboard */; };
 		0E3272292386DC3700EF36B4 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3272282386DC3600EF36B4 /* AddressBookViewController.swift */; };
-		0E32722C238701B200EF36B4 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32722B238701B200EF36B4 /* Contact.swift */; };
+		0E32722C238701B200EF36B4 /* ContactKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32722B238701B200EF36B4 /* ContactKey.swift */; };
 		0E32722E2387057400EF36B4 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32722D2387057400EF36B4 /* ContactService.swift */; };
 		0E3272332387071200EF36B4 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3272322387071200EF36B4 /* AddressCell.swift */; };
 		0E3272362387073000EF36B4 /* Cell+Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3272352387073000EF36B4 /* Cell+Reuseable.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E08168B238BF73B009723F0 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		0E32720E2386BB8100EF36B4 /* AddressBookApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddressBookApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E3272112386BB8100EF36B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E3272132386BB8100EF36B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +33,7 @@
 		0E32721F2386BB8300EF36B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E3272252386D50D00EF36B4 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		0E3272282386DC3600EF36B4 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressBookViewController.swift; path = "/Users/ldcpaul/Downloads/코드스쿼드/My/STEP23/swift-addressbookapp/AddressBookApp/AddressBookApp/AddressBookViewController.swift"; sourceTree = "<absolute>"; };
-		0E32722B238701B200EF36B4 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		0E32722B238701B200EF36B4 /* ContactKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactKey.swift; sourceTree = "<group>"; };
 		0E32722D2387057400EF36B4 /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		0E3272322387071200EF36B4 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		0E3272352387073000EF36B4 /* Cell+Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Reuseable.swift"; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E08168D238BF73F009723F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0E08168B238BF73B009723F0 /* String+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0E3272052386BB8100EF36B4 = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +113,8 @@
 		0E32722A2387018A00EF36B4 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				0E32722B238701B200EF36B4 /* Contact.swift */,
+				0E08168D238BF73F009723F0 /* Extensions */,
+				0E32722B238701B200EF36B4 /* ContactKey.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -271,13 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E32722C238701B200EF36B4 /* Contact.swift in Sources */,
+				0E32722C238701B200EF36B4 /* ContactKey.swift in Sources */,
 				0E3272292386DC3700EF36B4 /* AddressBookViewController.swift in Sources */,
 				0E3272122386BB8100EF36B4 /* AppDelegate.swift in Sources */,
 				0E3272362387073000EF36B4 /* Cell+Reuseable.swift in Sources */,
 				0E32723923870B7500EF36B4 /* Address.swift in Sources */,
 				0E32723E23870F4500EF36B4 /* TableView+.swift in Sources */,
 				0E32722E2387057400EF36B4 /* ContactService.swift in Sources */,
+				0E08168C238BF73B009723F0 /* String+.swift in Sources */,
 				0E3272332387071200EF36B4 /* AddressCell.swift in Sources */,
 				0E32723B23870BEA00EF36B4 /* AddressBookViewModel.swift in Sources */,
 				0E3272142386BB8100EF36B4 /* SceneDelegate.swift in Sources */,
