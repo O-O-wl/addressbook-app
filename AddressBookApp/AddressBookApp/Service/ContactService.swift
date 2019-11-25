@@ -26,7 +26,7 @@ class ContactService {
     func fetchContacts(_ completion: @escaping (Result<[CNContact], Error>) -> Void) {
         var result = [CNContact]()
         let keysToFetch = ContactKey.allCases.map { $0.descriptor }
-        let request = CNContactFetchRequest(keysToFetch: keysToFetch).then { $0.sortOrder = .familyName}
+        let request = CNContactFetchRequest(keysToFetch: keysToFetch).then { $0.sortOrder = .familyName }
         
         contactAccessQueue.async {
             do {
