@@ -69,8 +69,8 @@ class AddressBookViewModel: AddressBookViewBindable {
             case .success(let contacts):
                 self?.addresses = contacts
                     .compactMap { self?.parse(cotact: $0) }
-                    .reduce(into: [String: [Address]]()) { total, new in self?.classify(to: &total, with: new) }
-                    .map { (initiality: $0.key, list: $0.value) }
+                    .reduce(into: UnicodeUtility.UNICODE_DICTIONARY) { total, new in self?.classify(to: &total, with: new) }
+                    .map { (initality: $0.key, list: $0.value) }
                     .sorted { $0.initiality < $1.initiality }
             case .failure(let error):
                 self?.errorDidOccured?(error)
