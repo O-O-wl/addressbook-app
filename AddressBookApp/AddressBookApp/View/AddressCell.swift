@@ -13,12 +13,14 @@ import Then
 class AddressCell: UITableViewCell {
     
     // MARK: - UI
+    
     private let profileImageView = UIImageView()
     private let nameLabel = UILabel()
     private let telLabel = UILabel()
     private let emailLabel = UILabel()
     
     // MARK: - Configure
+    
     func configure(_ address: Address) {
         setUpAttribute()
         setUpConstraint()
@@ -33,6 +35,7 @@ class AddressCell: UITableViewCell {
         emailLabel.text = address.email
     }
 }
+
 // MARK: - Layout & Attributes
 extension AddressCell {
     

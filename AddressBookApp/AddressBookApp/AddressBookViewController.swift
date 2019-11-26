@@ -9,20 +9,24 @@ import UIKit
 import SnapKit
 import Then
 
+//MARK: - AddressBookPresentable
 protocol AddressBookPresentable: AnyObject {
     
     var viewModel: AddressBookViewBindable? { get set }
 }
 
+// MARK: - AddressBookViewController
 class AddressBookViewController: UITableViewController, AddressBookPresentable {
     
     
     // MARK: - Dependencies
+    
     var viewModel: AddressBookViewBindable? {
         didSet { bindViewModel() }
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -81,13 +85,11 @@ extension AddressBookViewController {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)
         }
-        
         return header
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let indexPath = IndexPath(row: 0, section: section)
-        return viewModel?[indexPath.section]?.list.count ?? 0
+        return viewModel?[section]?.list.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

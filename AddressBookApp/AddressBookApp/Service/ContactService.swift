@@ -13,16 +13,20 @@ import Foundation
 class ContactService {
    
     // MARK: - Singtone
+    
     static let shared = ContactService()
     
     // MARK: - Properties
+    
     private let store = CNContactStore()
     private let contactAccessQueue = DispatchQueue(label: "ContactAccessQueue",
                                                    attributes: DispatchQueue.Attributes.concurrent)
     // MARK: - Initializdr
+    
     private init() {}
     
     // MARK: - Methods
+    
     func fetchContacts(_ completion: @escaping (Result<[CNContact], Error>) -> Void) {
         var result = [CNContact]()
         let keysToFetch = ContactKey.allCases.map { $0.descriptor }
