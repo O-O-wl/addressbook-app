@@ -26,14 +26,17 @@ protocol AddressBookViewBindable: AnyObject {
 class AddressBookViewModel: AddressBookViewBindable {
     
     // MARK: - Dependencies
+    
     private let service: ContactService
     
     // MARK: - Properties
+    
     private var addresses: [ContactsBundle]? {
         didSet { dataDidLoad?() }
     }
     
     // MARK: - Status Closure
+    
     var dataDidLoad: (() -> Void)? {
         didSet { fetchRequest() }
     }
@@ -41,11 +44,13 @@ class AddressBookViewModel: AddressBookViewBindable {
     var errorDidOccured: ((Error) -> Void)?
     
     // MARK: - Initializer
+    
     init(service: ContactService) {
         self.service = service
     }
     
     // MARK: - Methods
+    
     var numOfBundles: Int {
         return addresses?.count ?? 0
     }
