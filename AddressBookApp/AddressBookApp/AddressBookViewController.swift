@@ -70,13 +70,34 @@ extension AddressBookViewController {
         return viewModel?.numOfBundles ?? 0
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?[section]?.list.count ?? 0
+    }
+    
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        guard let indices = viewModel?.numOfBundles else { return [] }
+        guard let count = viewModel?.numOfBundles else { return [] }
         
-        return (0..<indices).compactMap { viewModel?[$0]?.initiality }
+        return (0..<count).compactMap { viewModel?[$0]?.initiality }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withType: AddressCell.self, for: indexPath),
+            let address = viewModel?[row: indexPath]
+            else { return AddressCell() }
+        
+        cell.configure(address)
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if self.tableView(tableView, numberOfRowsInSection: section) <= 0 {
+            return 0
+        }
+        return 35
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let header = UIView().then { $0.backgroundColor = .systemGray5 }
         let label = UILabel().then { $0.text = viewModel?[section]?.initiality }
         header.addSubview(label)
@@ -88,16 +109,4 @@ extension AddressBookViewController {
         return header
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?[section]?.list.count ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withType: AddressCell.self, for: indexPath),
-            let address = viewModel?[row: indexPath]
-            else { return AddressCell() }
-        
-        cell.configure(address)
-        return cell
-    }
 }
