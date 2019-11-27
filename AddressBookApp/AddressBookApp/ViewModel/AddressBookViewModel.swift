@@ -13,10 +13,12 @@ typealias ContactsBundle = (initiality: String, list: [Address])
 // MARK: - AddressBookViewBindable
 protocol AddressBookViewBindable: AnyObject {
     
+    var typedText: String { get set }
+    var numOfBundles: Int { get }
     
     var dataDidLoad: (() -> Void)? { get set }
     var errorDidOccured: ((Error) -> Void)? { get set }
-    var numOfBundles: Int { get }
+    var dataDidUpdated: (() -> Void)? { get set }
     
     subscript(section index: Int) -> ContactsBundle? { get }
     subscript(row indexPath: IndexPath) -> Address? { get }
@@ -29,14 +31,17 @@ class AddressBookViewModel: AddressBookViewBindable {
     
     private let service: ContactService
     
-    // MARK: - Properties
+    // MARK: - Store Properties
     
     private var addresses: [Address]? {
         didSet { dataDidLoad?() }
     }
+    
     var typedText: String = "" {
-        didSet { dataDidUpdate?() }
+        didSet { dataDidUpdated?() }
     }
+    
+    // MARK: - Computed Properties
     
     private var contacts: [ContactsBundle]? {
         get {
@@ -48,6 +53,9 @@ class AddressBookViewModel: AddressBookViewBindable {
         }
     }
     
+    var numOfBundles: Int {
+        return contacts?.count ?? 0
+    }
     // MARK: - Status Closure
     
     var dataDidLoad: (() -> Void)? {
@@ -56,17 +64,15 @@ class AddressBookViewModel: AddressBookViewBindable {
     
     var errorDidOccured: ((Error) -> Void)?
     
+    var dataDidUpdated: (() -> Void)?
+    
     // MARK: - Initializer
     
     init(service: ContactService) {
         self.service = service
     }
     
-    // MARK: - Methods
-    
-    var numOfBundles: Int {
-        return contacts?.count ?? 0
-    }
+    // MARK: - Subscript
     
     subscript(section index: Int) -> ContactsBundle? {
         return contacts?[index]
@@ -76,15 +82,14 @@ class AddressBookViewModel: AddressBookViewBindable {
         return contacts?[indexPath.section].list[indexPath.row]
     }
     
+    // MARK: - Methods
+    
     private func fetchRequest() {
         service.fetchContacts { [weak self] result in
             switch(result) {
             case .success(let contacts):
                 self?.addresses = contacts
                     .compactMap { self?.parse(cotact: $0) }
-                    .reduce(into: UnicodeUtility.UNICODE_DICTIONARY) { total, new in self?.classify(to: &total, with: new) }
-                    .map { (initality: $0.key, list: $0.value) }
-                    .sorted { $0.initiality < $1.initiality }
             case .failure(let error):
                 self?.errorDidOccured?(error)
             }
@@ -98,9 +103,20 @@ class AddressBookViewModel: AddressBookViewBindable {
                         email: cotact.emailAddresses.first?.value as String? ?? "" )
     }
     
+    private func filter(address: Address) -> Bool {
+        let name = address.name.lowercased()
+        let searchText = typedText.lowercased()
+        
+        let nameInitiality = name.chacters.compactMap { $0.initiality }
+        let searchTextInitiality = searchText.chacters.compactMap { $0.initiality }
+        
+        return nameInitiality.hasPrefix(searchTextInitiality) || name.hasPrefix(searchText)
+    }
+    
     private func classify(to dictionary: inout [String: [Address]], with address: Address) {
         if let firstSpell = address.name.firstSpell {
             dictionary[firstSpell, default: [Address]()].append(address)
         }
     }
+    
 }
