@@ -12,7 +12,6 @@ typealias ContactsBundle = (initiality: String, list: [Address])
 
 // MARK: - AddressBookViewBindable
 protocol AddressBookViewBindable: AnyObject {
-    
     var typedText: String { get set }
     var numOfBundles: Int { get }
     
@@ -29,7 +28,7 @@ class AddressBookViewModel: AddressBookViewBindable {
     
     // MARK: - Dependencies
     
-    private let service: ContactService
+    private let service: ContactServable
     
     // MARK: - Store Properties
     
@@ -68,7 +67,7 @@ class AddressBookViewModel: AddressBookViewBindable {
     
     // MARK: - Initializer
     
-    init(service: ContactService) {
+    init(service: ContactServable) {
         self.service = service
     }
     
