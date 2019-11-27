@@ -97,7 +97,6 @@ extension AddressBookViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let header = UIView().then { $0.backgroundColor = .systemGray5 }
         let label = UILabel().then { $0.text = viewModel?[section]?.initiality }
         header.addSubview(label)
@@ -108,5 +107,4 @@ extension AddressBookViewController {
         }
         return header
     }
-    
 }

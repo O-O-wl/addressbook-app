@@ -21,6 +21,8 @@
 		0E32723B23870BEA00EF36B4 /* AddressBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32723A23870BEA00EF36B4 /* AddressBookViewModel.swift */; };
 		0E32723E23870F4500EF36B4 /* TableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E32723D23870F4500EF36B4 /* TableView+.swift */; };
 		0E8B88BD238CD9B8007E6D88 /* UnicodeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88BC238CD9B8007E6D88 /* UnicodeUtility.swift */; };
+		0E8B88BF238E758B007E6D88 /* Character+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88BE238E758B007E6D88 /* Character+.swift */; };
+		0E8B88C1238E7597007E6D88 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88C0238E7597007E6D88 /* Array+.swift */; };
 		FB6272D77146E5234679F980 /* libPods-AddressBookApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F5C4B16138BD53E9C1CA76 /* libPods-AddressBookApp.a */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 		0E32723A23870BEA00EF36B4 /* AddressBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewModel.swift; sourceTree = "<group>"; };
 		0E32723D23870F4500EF36B4 /* TableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+.swift"; sourceTree = "<group>"; };
 		0E8B88BC238CD9B8007E6D88 /* UnicodeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnicodeUtility.swift; sourceTree = "<group>"; };
+		0E8B88BE238E758B007E6D88 /* Character+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+.swift"; sourceTree = "<group>"; };
+		0E8B88C0238E7597007E6D88 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		3D771BA485F1D9B9A3CAEFC8 /* Pods-AddressBookApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBookApp.release.xcconfig"; path = "Target Support Files/Pods-AddressBookApp/Pods-AddressBookApp.release.xcconfig"; sourceTree = "<group>"; };
 		59BF824FC8A2FFA1A3708EC4 /* Pods-AddressBookApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBookApp.debug.xcconfig"; path = "Target Support Files/Pods-AddressBookApp/Pods-AddressBookApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A2F5C4B16138BD53E9C1CA76 /* libPods-AddressBookApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AddressBookApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				0E08168B238BF73B009723F0 /* String+.swift */,
+				0E8B88BE238E758B007E6D88 /* Character+.swift */,
+				0E8B88C0238E7597007E6D88 /* Array+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -296,7 +302,9 @@
 				0E3272332387071200EF36B4 /* AddressCell.swift in Sources */,
 				0E32723B23870BEA00EF36B4 /* AddressBookViewModel.swift in Sources */,
 				0E3272142386BB8100EF36B4 /* SceneDelegate.swift in Sources */,
+				0E8B88BF238E758B007E6D88 /* Character+.swift in Sources */,
 				0E8B88BD238CD9B8007E6D88 /* UnicodeUtility.swift in Sources */,
+				0E8B88C1238E7597007E6D88 /* Array+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@ import Foundation
 
 class ContactService {
    
-    // MARK: - Singtone
+    // MARK: - Singletone
     
     static let shared = ContactService()
     
