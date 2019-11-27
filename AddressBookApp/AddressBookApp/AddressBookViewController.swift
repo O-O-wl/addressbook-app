@@ -50,7 +50,7 @@ extension AddressBookViewController {
             }
         }
         
-        viewModel.dataDidUpdate = { [weak self] in
+        viewModel.dataDidUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
@@ -147,5 +147,13 @@ extension AddressBookViewController {
             $0.leading.equalToSuperview().offset(10)
         }
         return header
+    }
+}
+// MARK: - UISearchBarDelegate
+extension AddressBookViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        viewModel?.typedText = searchText
     }
 }
