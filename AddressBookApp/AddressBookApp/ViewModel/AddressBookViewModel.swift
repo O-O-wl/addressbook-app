@@ -18,7 +18,7 @@ protocol AddressBookViewBindable: AnyObject {
     var errorDidOccured: ((Error) -> Void)? { get set }
     var numOfBundles: Int { get }
     
-    subscript(section: Int) -> ContactsBundle? { get }
+    subscript(section index: Int) -> ContactsBundle? { get }
     subscript(row indexPath: IndexPath) -> Address? { get }
 }
 
@@ -31,8 +31,21 @@ class AddressBookViewModel: AddressBookViewBindable {
     
     // MARK: - Properties
     
-    private var addresses: [ContactsBundle]? {
+    private var addresses: [Address]? {
         didSet { dataDidLoad?() }
+    }
+    var typedText: String = "" {
+        didSet { dataDidUpdate?() }
+    }
+    
+    private var contacts: [ContactsBundle]? {
+        get {
+            addresses?
+                .filter(filter)
+                .reduce(into: UnicodeUtility.UNICODE_DICTIONARY) { classify(to: &$0, with: $1) }
+                .map { (initality: $0.key, list: $0.value) }
+                .sorted { $0.initiality < $1.initiality }
+        }
     }
     
     // MARK: - Status Closure
@@ -52,15 +65,15 @@ class AddressBookViewModel: AddressBookViewBindable {
     // MARK: - Methods
     
     var numOfBundles: Int {
-        return addresses?.count ?? 0
+        return contacts?.count ?? 0
     }
     
-    subscript(section: Int) -> ContactsBundle? {
-        return addresses?[section]
+    subscript(section index: Int) -> ContactsBundle? {
+        return contacts?[index]
     }
     
     subscript(row indexPath: IndexPath) -> Address? {
-        return addresses?[indexPath.section].list[indexPath.row]
+        return contacts?[indexPath.section].list[indexPath.row]
     }
     
     private func fetchRequest() {
