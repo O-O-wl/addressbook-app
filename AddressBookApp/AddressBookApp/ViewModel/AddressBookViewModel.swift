@@ -105,12 +105,14 @@ class AddressBookViewModel: AddressBookViewBindable {
     
     private func filter(address: Address) -> Bool {
         let name = address.name.lowercased()
-        let searchText = typedText.lowercased()
+        let searchedText = typedText.lowercased()
         
-        let nameInitiality = name.chacters.compactMap { $0.initiality }
-        let searchTextInitiality = searchText.chacters.compactMap { $0.initiality }
-        
-        return nameInitiality.hasPrefix(searchTextInitiality) || name.hasPrefix(searchText)
+        if !searchedText.isCompletion {
+            let nameInitiality = name.chacters.compactMap { $0.initiality }
+            let searchedInitiality = searchedText.chacters.compactMap { $0.initiality }
+            return nameInitiality.hasPrefix(searchedInitiality)
+        }
+        return name.hasPrefix(searchedText)
     }
     
     private func classify(to dictionary: inout [String: [Address]], with address: Address) {

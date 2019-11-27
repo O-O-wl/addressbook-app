@@ -28,6 +28,15 @@ extension String {
         }
     }
     
+    var isCompletion: Bool {
+        self.chacters
+            .map { "\($0)" }
+            .reduce(false) {
+               $1.normalize(.NFC).unicodeScalars.count != $1.normalize(.NFD).unicodeScalars.count
+                || $0
+        }
+    }
+    
     enum NormalizationForm {
         case NFD
         case NFC
