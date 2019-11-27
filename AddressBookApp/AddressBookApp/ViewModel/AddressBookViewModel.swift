@@ -112,6 +112,7 @@ class AddressBookViewModel: AddressBookViewBindable {
             let searchedInitiality = searchedText.chacters.compactMap { $0.initiality }
             return nameInitiality.hasPrefix(searchedInitiality)
         }
+        
         return name.hasPrefix(searchedText)
     }
     
