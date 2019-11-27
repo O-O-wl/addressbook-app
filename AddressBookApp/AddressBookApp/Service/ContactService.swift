@@ -9,11 +9,6 @@
 import Contacts
 import Foundation
 
-protocol ContactServable {
-    
-   func fetchContacts(_ completion: @escaping (Result<[CNContact], Error>) -> Void)
-}
-
 class ContactService: ContactServable {
    
     // MARK: - Singletone

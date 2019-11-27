@@ -23,6 +23,9 @@
 		0E8B88BF238E758B007E6D88 /* Character+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88BE238E758B007E6D88 /* Character+.swift */; };
 		0E8B88C1238E7597007E6D88 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88C0238E7597007E6D88 /* Array+.swift */; };
 		0E8B88CE238E874C007E6D88 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88CD238E874C007E6D88 /* AddressBookViewController.swift */; };
+		0E8B88D0238E92D2007E6D88 /* AddressBookViewBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88CF238E92D2007E6D88 /* AddressBookViewBindable.swift */; };
+		0E8B88D2238E9308007E6D88 /* AddressBookPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88D1238E9308007E6D88 /* AddressBookPresentable.swift */; };
+		0E8B88D5238E9322007E6D88 /* ContactServable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8B88D4238E9322007E6D88 /* ContactServable.swift */; };
 		FB6272D77146E5234679F980 /* libPods-AddressBookApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F5C4B16138BD53E9C1CA76 /* libPods-AddressBookApp.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,9 @@
 		0E8B88BE238E758B007E6D88 /* Character+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+.swift"; sourceTree = "<group>"; };
 		0E8B88C0238E7597007E6D88 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		0E8B88CD238E874C007E6D88 /* AddressBookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
+		0E8B88CF238E92D2007E6D88 /* AddressBookViewBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewBindable.swift; sourceTree = "<group>"; };
+		0E8B88D1238E9308007E6D88 /* AddressBookPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookPresentable.swift; sourceTree = "<group>"; };
+		0E8B88D4238E9322007E6D88 /* ContactServable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactServable.swift; sourceTree = "<group>"; };
 		3D771BA485F1D9B9A3CAEFC8 /* Pods-AddressBookApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBookApp.release.xcconfig"; path = "Target Support Files/Pods-AddressBookApp/Pods-AddressBookApp.release.xcconfig"; sourceTree = "<group>"; };
 		59BF824FC8A2FFA1A3708EC4 /* Pods-AddressBookApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AddressBookApp.debug.xcconfig"; path = "Target Support Files/Pods-AddressBookApp/Pods-AddressBookApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A2F5C4B16138BD53E9C1CA76 /* libPods-AddressBookApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AddressBookApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				0E32722D2387057400EF36B4 /* ContactService.swift */,
+				0E8B88D4238E9322007E6D88 /* ContactServable.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -128,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				0E32723A23870BEA00EF36B4 /* AddressBookViewModel.swift */,
+				0E8B88CF238E92D2007E6D88 /* AddressBookViewBindable.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -165,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				0E8B88CD238E874C007E6D88 /* AddressBookViewController.swift */,
+				0E8B88D1238E9308007E6D88 /* AddressBookPresentable.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -285,6 +294,7 @@
 			files = (
 				0E32722C238701B200EF36B4 /* ContactKey.swift in Sources */,
 				0E3272122386BB8100EF36B4 /* AppDelegate.swift in Sources */,
+				0E8B88D0238E92D2007E6D88 /* AddressBookViewBindable.swift in Sources */,
 				0E3272362387073000EF36B4 /* Cell+Reuseable.swift in Sources */,
 				0E32723923870B7500EF36B4 /* Address.swift in Sources */,
 				0E32723E23870F4500EF36B4 /* TableView+.swift in Sources */,
@@ -294,7 +304,9 @@
 				0E32723B23870BEA00EF36B4 /* AddressBookViewModel.swift in Sources */,
 				0E3272142386BB8100EF36B4 /* SceneDelegate.swift in Sources */,
 				0E8B88CE238E874C007E6D88 /* AddressBookViewController.swift in Sources */,
+				0E8B88D5238E9322007E6D88 /* ContactServable.swift in Sources */,
 				0E8B88BF238E758B007E6D88 /* Character+.swift in Sources */,
+				0E8B88D2238E9308007E6D88 /* AddressBookPresentable.swift in Sources */,
 				0E8B88BD238CD9B8007E6D88 /* UnicodeUtility.swift in Sources */,
 				0E8B88C1238E7597007E6D88 /* Array+.swift in Sources */,
 			);

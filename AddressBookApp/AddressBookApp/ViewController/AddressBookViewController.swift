@@ -9,12 +9,6 @@ import UIKit
 import SnapKit
 import Then
 
-//MARK: - AddressBookPresentable
-protocol AddressBookPresentable: AnyObject {
-    
-    var viewModel: AddressBookViewBindable? { get set }
-}
-
 // MARK: - AddressBookViewController
 class AddressBookViewController: UITableViewController, AddressBookPresentable {
     

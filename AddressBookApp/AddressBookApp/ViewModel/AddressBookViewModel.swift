@@ -10,19 +10,6 @@ import Foundation
 
 typealias ContactsBundle = (initiality: String, list: [Address])
 
-// MARK: - AddressBookViewBindable
-protocol AddressBookViewBindable: AnyObject {
-    var typedText: String { get set }
-    var numOfBundles: Int { get }
-    
-    var dataDidLoad: (() -> Void)? { get set }
-    var errorDidOccured: ((Error) -> Void)? { get set }
-    var dataDidUpdated: (() -> Void)? { get set }
-    
-    subscript(section index: Int) -> ContactsBundle? { get }
-    subscript(row indexPath: IndexPath) -> Address? { get }
-}
-
 // MARK: - AddressBookViewModel
 class AddressBookViewModel: AddressBookViewBindable {
     
