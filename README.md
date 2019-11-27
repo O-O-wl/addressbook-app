@@ -1,6 +1,14 @@
 # swift-addressbookapp
 <br>
 
+### MVVM 아키텍처 
+
+
+
+<img width="861" alt="스크린샷 2019-11-27 오후 8 10 17" src="https://user-images.githubusercontent.com/39197978/69718590-183f1800-1152-11ea-98c0-838ca604be2e.png">
+
+
+
 ## STEP1
 
 <img width="508" alt="스크린샷 2019-11-22 오전 4 56 36" src="https://user-images.githubusercontent.com/39197978/69372133-7ac48e00-0ce4-11ea-949a-256d1975ca8e.png">
