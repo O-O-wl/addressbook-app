@@ -89,18 +89,18 @@ class AddressBookViewModel: AddressBookViewBindable {
             switch(result) {
             case .success(let contacts):
                 self?.addresses = contacts
-                    .compactMap { self?.parse(cotact: $0) }
+                    .compactMap { self?.parse(contact: $0) }
             case .failure(let error):
                 self?.errorDidOccured?(error)
             }
         }
     }
     
-    private func parse(cotact: CNContact) -> Address {
-        return  Address(imageData: cotact.imageData,
-                        name: cotact.familyName + cotact.givenName,
-                        tel: cotact.phoneNumbers.first?.value.stringValue ?? "",
-                        email: cotact.emailAddresses.first?.value as String? ?? "" )
+    private func parse(contact: CNContact) -> Address {
+        return  Address(imageData: contact.imageData,
+                        name: contact.familyName + contact.givenName,
+                        tel: contact.phoneNumbers.first?.value.stringValue ?? "",
+                        email: contact.emailAddresses.first?.value as String? ?? "" )
     }
     
     private func filter(address: Address) -> Bool {
