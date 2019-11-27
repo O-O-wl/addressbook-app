@@ -63,16 +63,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E08168D238BF73F009723F0 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0E08168B238BF73B009723F0 /* String+.swift */,
-				0E8B88BE238E758B007E6D88 /* Character+.swift */,
-				0E8B88C0238E7597007E6D88 /* Array+.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		0E3272052386BB8100EF36B4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,7 +89,6 @@
 				0E327231238706EA00EF36B4 /* ViewModel */,
 				0E327230238706E600EF36B4 /* View */,
 				0E32722F238706E000EF36B4 /* ViewController */,
-				0E32722A2387018A00EF36B4 /* Constant */,
 				0E3272272386D96300EF36B4 /* Service */,
 				0E3272112386BB8100EF36B4 /* AppDelegate.swift */,
 				0E3272132386BB8100EF36B4 /* SceneDelegate.swift */,
@@ -121,7 +110,6 @@
 		0E32722A2387018A00EF36B4 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
-				0E08168D238BF73F009723F0 /* Extensions */,
 				0E32722B238701B200EF36B4 /* ContactKey.swift */,
 				0E8B88BC238CD9B8007E6D88 /* UnicodeUtility.swift */,
 			);
@@ -155,6 +143,7 @@
 		0E3272342387071700EF36B4 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0E32722A2387018A00EF36B4 /* Constant */,
 				0E32723C23870F3A00EF36B4 /* Extensions */,
 				0E3272352387073000EF36B4 /* Cell+Reuseable.swift */,
 			);
@@ -172,6 +161,9 @@
 		0E32723C23870F3A00EF36B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0E08168B238BF73B009723F0 /* String+.swift */,
+				0E8B88BE238E758B007E6D88 /* Character+.swift */,
+				0E8B88C0238E7597007E6D88 /* Array+.swift */,
 				0E32723D23870F4500EF36B4 /* TableView+.swift */,
 			);
 			path = Extensions;
