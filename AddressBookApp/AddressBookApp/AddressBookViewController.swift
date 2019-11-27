@@ -18,6 +18,10 @@ protocol AddressBookPresentable: AnyObject {
 // MARK: - AddressBookViewController
 class AddressBookViewController: UITableViewController, AddressBookPresentable {
     
+    // MARK: - UI
+    
+    private let searchbar = UISearchBar()
+    private let cancelButton = UIButton()
     
     // MARK: - Dependencies
     
@@ -30,7 +34,8 @@ class AddressBookViewController: UITableViewController, AddressBookPresentable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpTableView()
+        setUpAttribute()
+        setUpConstraints()
     }
 }
 // MARK: - Bind
@@ -45,22 +50,58 @@ extension AddressBookViewController {
             }
         }
         
+        viewModel.dataDidUpdate = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        
         viewModel.errorDidOccured = { [weak self] error in
             let alertVC =  UIAlertController(title: "에러 발생",
                                              message: error.localizedDescription,
                                              preferredStyle: .alert)
-            self?.present(alertVC, animated: true, completion: nil)}
+            self?.present(alertVC, animated: true, completion: nil) }
     }
 }
 // MARK: - Layout & Attributes
 extension AddressBookViewController {
     
-    private func setUpTableView() {
+    private func setUpAttribute() {
+        self.navigationController?.navigationBar.do {
+            $0.addSubview(searchbar)
+            $0.addSubview(cancelButton)
+        }
+        
         self.tableView.do {
             $0.rowHeight = 90
             $0.register(AddressCell.self,
                         forCellReuseIdentifier: AddressCell.reuseIdentifier)
         }
+        
+        searchbar.do {
+            $0.keyboardType = .emailAddress
+            $0.delegate = self
+        }
+        
+        cancelButton.do {
+            $0.setTitleColor(.systemBlue, for: .normal)
+            $0.setTitle("Cancel", for: .normal)
+        }
+    }
+    
+    private func setUpConstraints() {
+        searchbar.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalTo(cancelButton.snp.leading).offset(-10)
+        }
+        
+        cancelButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(10)
+        }
+        
+        cancelButton.snp.contentCompressionResistanceHorizontalPriority = 1000
     }
 }
 // MARK: - UITableViewDataSource
@@ -71,13 +112,13 @@ extension AddressBookViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?[section]?.list.count ?? 0
+        return viewModel?[section: section]?.list.count ?? 0
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         guard let count = viewModel?.numOfBundles else { return [] }
         
-        return (0..<count).compactMap { viewModel?[$0]?.initiality }
+        return (0..<count).compactMap { viewModel?[section: $0]?.initiality }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,7 +139,7 @@ extension AddressBookViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView().then { $0.backgroundColor = .systemGray5 }
-        let label = UILabel().then { $0.text = viewModel?[section]?.initiality }
+        let label = UILabel().then { $0.text = viewModel?[section: section]?.initiality }
         header.addSubview(label)
         
         label.snp.makeConstraints {
