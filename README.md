@@ -29,7 +29,7 @@ Contacts 프레임워크에 대해 학습하며 진행했다.
 
 <img width="497" alt="스크린샷 2019-11-26 오후 3 47 04" src="https://user-images.githubusercontent.com/39197978/69641477-a0b2af80-10a3-11ea-84ae-b627740d86c1.png">
 
-
+#### 진행 🏃‍♂️
 
 해당 스탭에서는 Table Section Header 와 IndexTitle을 구현했다.
 
@@ -55,6 +55,33 @@ Contacts 프레임워크에 대해 학습하며 진행했다.
 
 
 
+#### 진행 🏃‍♂️
+
+초성 검색을 위해 유니코드 정규화를 학습했다.
+
+**ㄱ (Hangul Jamo)** 와 **가 를 분할한 ㄱ(Hangul Compatibility Jamo)** 의 유니코드가 달라서 애를 먹었다. 
+
+그래서 초성을  Jamo 형태로 분할하는 정규분해 (NFKD) 방식으로 분해해서 작업을 했다.
 
 
- 
+
+또 처음으로 MVVM 에서 VC -> VM 로 인터렉션을 전달하는 방식의 구현을 해보았다.
+
+searchBar 에 텍스트가 입력되면 ViewModel 에 타이핑된 텍스트(`typedText`)를 주입했고, 
+
+그를 참조하는 `filter` 메소드로 `Contact` 들을 필터링 했다. 그 후, 다시 업데이트되어야하므로, 
+
+`typedText` 에 프로퍼티 옵저버를 걸어서 업데이트를 주입된 dataDidUpdated 클로저를 호출해서 
+
+VC를 업데이트 했다.
+
+
+
+#### 검색 
+
+1. `UISearchBarDelegate`을 통한 **텍스트 가져오기**
+2. 가져온 텍스트`typedText`를  **ViewModel에게 주입**하기
+3. 텍스트가 주입되면 Contact 필터링하는 **프로퍼티 옵저버 호출**하기
+4. 주입된 텍스트를 참조해서 필터링하는 메소드(`filter(Address)->Bool`)로  필터링하기
+5. 데이터가 업데이트된 이후 상태를 반영하는 클로저 (`dataDidUpdated()->Void`)호출하기
+
