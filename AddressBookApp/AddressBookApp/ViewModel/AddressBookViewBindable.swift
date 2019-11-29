@@ -9,8 +9,8 @@
 import Foundation
 
 // MARK: - AddressBookViewBindable
-protocol AddressBookViewBindable: AnyObject {
-    var typedText: String { get set }
+protocol AddressBookViewBindable: AnyObject, TextHandlable {
+    
     var numOfBundles: Int { get }
     
     var dataDidLoad: (() -> Void)? { get set }
@@ -19,4 +19,9 @@ protocol AddressBookViewBindable: AnyObject {
     
     subscript(section index: Int) -> ContactsBundle? { get }
     subscript(row indexPath: IndexPath) -> Address? { get }
+}
+
+protocol TextHandlable {
+    
+    var text: String { get set }
 }
