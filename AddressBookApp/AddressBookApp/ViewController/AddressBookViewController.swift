@@ -32,7 +32,9 @@ class AddressBookViewController: UITableViewController, AddressBookPresentable {
         setUpConstraints()
     }
 }
+
 // MARK: - Bind
+
 extension AddressBookViewController {
     
     private func bindViewModel() {
@@ -57,7 +59,9 @@ extension AddressBookViewController {
             self?.present(alertVC, animated: true, completion: nil) }
     }
 }
+
 // MARK: - Layout & Attributes
+
 extension AddressBookViewController {
     
     private func setUpAttribute() {
@@ -98,7 +102,9 @@ extension AddressBookViewController {
         cancelButton.snp.contentCompressionResistanceHorizontalPriority = 1000
     }
 }
+
 // MARK: - UITableViewDataSource
+
 extension AddressBookViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -148,6 +154,6 @@ extension AddressBookViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        viewModel?.typedText = searchText
+        viewModel?.text = searchText
     }
 }

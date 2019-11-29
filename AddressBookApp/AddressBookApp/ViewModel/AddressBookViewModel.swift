@@ -17,13 +17,13 @@ class AddressBookViewModel: AddressBookViewBindable {
     
     private let service: ContactServable
     
-    // MARK: - Store Properties
+    // MARK: - Stored Properties
     
     private var addresses: [Address]? {
         didSet { dataDidLoad?() }
     }
     
-    var typedText: String = "" {
+    var text: String = "" {
         didSet { dataDidUpdated?() }
     }
     
@@ -32,7 +32,7 @@ class AddressBookViewModel: AddressBookViewBindable {
     private var contacts: [ContactsBundle]? {
         get {
             addresses?
-                .filter(filter)
+                .filter(check)
                 .reduce(into: UnicodeUtility.UNICODE_DICTIONARY) { classify(to: &$0, with: $1) }
                 .map { (initality: $0.key, list: $0.value) }
                 .sorted { $0.initiality < $1.initiality }
@@ -75,23 +75,23 @@ class AddressBookViewModel: AddressBookViewBindable {
             switch(result) {
             case .success(let contacts):
                 self?.addresses = contacts
-                    .compactMap { self?.parse(contact: $0) }
+                    .compactMap { self?.make(from: $0) }
             case .failure(let error):
                 self?.errorDidOccured?(error)
             }
         }
     }
     
-    private func parse(contact: CNContact) -> Address {
+    private func make(from contact: CNContact) -> Address {
         return  Address(imageData: contact.imageData,
                         name: contact.familyName + contact.givenName,
                         tel: contact.phoneNumbers.first?.value.stringValue ?? "",
                         email: contact.emailAddresses.first?.value as String? ?? "" )
     }
     
-    private func filter(address: Address) -> Bool {
+    private func check(address: Address) -> Bool {
         let name = address.name.lowercased()
-        let searchedText = typedText.lowercased()
+        let searchedText = text.lowercased()
         
         if !searchedText.isCompletion {
             let nameInitiality = name.chacters.compactMap { $0.initiality }
