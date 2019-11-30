@@ -48,7 +48,7 @@ Contacts 프레임워크에 대해 학습하며 진행했다.
 - *numberOfSectionsInTableView:* method – 모든 섹션의 갯수을 반환
 - *titleForHeaderInSection:* method – 섹션들 각각의 헤더 타이틀들을 반환해주는 메소드이다. 섹션에 타이틀을 할당하지 않는다면 구현하지 않아도 되는 메소드이다.
 - *numberOfRowsInSection:* method – 해당 섹션의 로우의 수를 반환해주는 메소드이다.
-- cellForRowAtIndexPath: method – 이 메소드는  this method shouldn’t be new to you if you know how to display data in UITableView. It returns the table data for a particular section.
+- cellForRowAtIndexPath: method – 이 메소드는 테이블 뷰를 설정해주는 메소드입니다. 
 - *sectionIndexTitlesForTableView:* method – 테이블뷰 오른쪽에 리스트형태로 인덱스되어진 타이틀을 반환해준다.
 
 - *sectionForSectionIndexTitle:* method – 특정인덱스가 탭되면 어디로 점프할지 선택된 섹션의 인덱스를 반환해준다. 
